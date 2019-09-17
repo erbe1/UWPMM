@@ -1,0 +1,113 @@
+﻿<Page
+    x:Class="UWPMM.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:UWPMM.ViewModels"
+    Loaded="Window_Loaded"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Padding="20">
+                    <TextBlock x:Name="timeTextBlock" FontSize="22"></TextBlock>
+                    <TextBlock x:Name="dateTextBlock" FontSize="18"></TextBlock>
+                    <TextBlock FontSize="16">Vecka: 
+                    <Run Text="{Binding Path=Day.WeekNr}" FontSize="16"/>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Padding="20">
+                    <TextBlock Text="{Binding Path=ResRobot.BusNumber}"/>
+                    <TextBlock Text="{Binding Path=ResRobot.OriginDest}"/>
+                    <TextBlock Text="{Binding Path=ResRobot.TheDepartures}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="1" Padding="20">
+                    <TextBlock></TextBlock>
+                    <TextBlock Text="{Binding Path=ResRobot.Destination}"/>
+                    <TextBlock Text="{Binding Path=ResRobot.TheArrivals}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" HorizontalAlignment="Right" Padding="20">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock FontSize="22">
+                <Run Text="{Binding Path=Weather.Temp}"/><Run Text="°"/>
+                    </TextBlock>
+                    <TextBlock Text="{Binding Path=Weather.Description}"></TextBlock>
+                    <TextBlock>
+                <Run Text="↑"/>
+                <Run Text="{Binding Path=Weather.Sunrise}"/>
+                <Run Text=""/>
+                <Run Text="↓"/>
+                <Run Text="{Binding Path=Weather.Sunset}"/>
+                    </TextBlock>
+                    <TextBlock Text="{Binding Path=Weather.City}"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                    <Image Source="{Binding Path=Weather.Icon}" Height="100"></Image>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2">
+                    <TextBlock Text="{Binding Path=Weather.ForecastTime}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock Text="{Binding Path=Weather.ForecastDescription}"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="2">
+                    <TextBlock Grid.Column="1" Text="{Binding Path=Weather.ForecastTemp}"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                    <TextBlock Text="{Binding Path=News.NewsFlashHeader}" FontSize="16"/>
+                    <TextBlock Text="{Binding Path=News.NewsFlash}"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
+                    <TextBlock Text="{Binding Path=Day.NameDayHeader}" FontSize="16"/>
+                    <TextBlock Text="{Binding Path=Day.NameDay}"/>
+                    <TextBlock Text="{Binding Path=Day.HolidayToday}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="5" Grid.ColumnSpan="2">
+                    <TextBlock Text="{Binding Path=Vma.AlertMsgTitle}"></TextBlock>
+                    <TextBlock Text="{Binding Path=Vma.AlertMsgSummary}"></TextBlock>
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
